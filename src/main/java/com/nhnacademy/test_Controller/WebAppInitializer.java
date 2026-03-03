@@ -10,9 +10,7 @@ import java.util.Set;
 
 @Slf4j
 @HandlesTypes(
-        value = {
-                com.nhnacademy.test_servlet.Student.class
-        }
+        value = com.nhnacademy.test_servlet.Student.class
 )
 public class WebAppInitializer implements ServletContainerInitializer {
     @Override

@@ -6,16 +6,19 @@ import com.nhnacademy.test_servlet.StudentRepository;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-
+@Slf4j
 @RequestMapping(value = "/student/view.do", method = RequestMapping.Method.POST)
 public class StudentRegisterController implements Command{
     @Override
     public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
+        long start, stop;
+        start = System.currentTimeMillis();
         StudentRepository studentRepository = (StudentRepository) req.getServletContext().getAttribute("studentRepository");
         if (studentRepository == null) {
             throw new ServletException("studentRepository not found");
@@ -51,6 +54,9 @@ public class StudentRegisterController implements Command{
 
         req.setAttribute("view", "redirect:/student/view.do?id=" + student.getId());
 
+
+        stop = System.currentTimeMillis();
+        log.info("total time = {}", stop - start);
         return "redirect:/student/view.do?id="+ student.getId();
     }
 }
