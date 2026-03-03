@@ -36,15 +36,6 @@ public class ControllerFactory {
         }
     }
 
-    public Object getBean(String method, String path) {
-        String key = buildKey(method, path);
-        Object bean = beanMap.get(key);
-        if (bean == null) {
-            throw new IllegalArgumentException("No controller for: " + key);
-        }
-        return bean;
-    }
-
     private String buildKey(String method, String path) {
         return method.toUpperCase() + ":" + path;
     }

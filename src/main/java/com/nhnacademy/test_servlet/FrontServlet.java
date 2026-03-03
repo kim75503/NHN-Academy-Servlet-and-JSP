@@ -33,10 +33,10 @@ public class FrontServlet extends HttpServlet {
                 throw new ServletException("No command mapping for: " + req.getMethod() + " " + req.getServletPath());
             }
 
-            String view = command.execute(req, resp);
-            if (view == null || view.isBlank()) {
-                throw new ServletException("view is null/blank");
-            }
+//            String view = command.execute(req, resp);
+
+            Command proxy = new StopWatchProxy(command);
+            String view = proxy.execute(req,resp);
 
             if (view.startsWith(REDIRECT_PREFIX)) {
                 String redirectUrl = view.substring(REDIRECT_PREFIX.length());
@@ -86,4 +86,5 @@ public class FrontServlet extends HttpServlet {
 
         return command;
     }
+
 }
