@@ -18,6 +18,6 @@ public class ErrorController implements Command{
         req.setAttribute("message", req.getAttribute(ERROR_MESSAGE));
         req.setAttribute("request_uri", req.getAttribute(ERROR_REQUEST_URI));
 
-        return "/error.jsp";
+        return "/student/error.jsp";
     }
 }

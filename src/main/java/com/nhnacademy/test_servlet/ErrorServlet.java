@@ -22,7 +22,7 @@ public class ErrorServlet extends HttpServlet {
         req.setAttribute("request_uri", req.getAttribute(ERROR_REQUEST_URI));
 
 
-        RequestDispatcher rd = req.getRequestDispatcher("/error.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/student/error.jsp");
         rd.forward(req,resp);
         //todo exception_type
         //todo message

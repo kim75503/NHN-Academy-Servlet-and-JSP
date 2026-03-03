@@ -1,4 +1,4 @@
-package com.nhnacademy;
+package com.nhnacademy.example;
 
 @Deprecated
 public class Example02 {
